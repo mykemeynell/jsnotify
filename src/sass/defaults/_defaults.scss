@@ -65,4 +65,16 @@
         }
     }
 
+    /**
+     * Info styles
+     */
+    &.notify-info {background-color:$blue;border-color:$dark_blue;
+        .notify-body, .notify-body * {color:white;}
+        .notify-action-buttons {
+            .notify-square-button {
+                &.notify-close-button {background-image:url($close_white);}
+            }
+        }
+    }
+
 }
