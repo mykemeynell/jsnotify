@@ -43,6 +43,11 @@ function notify(options) {
         var message = this.getNotificationMessage();
         var icon = this.getNotificationIcon();
 
+        if(message === null) {
+            console.error('Message not set in notification');
+            return false;
+        }
+
         if(title !== null) {
             title = '<span class="notify-body-title">' + title + '</span>';
         } else {
