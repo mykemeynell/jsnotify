@@ -4,6 +4,7 @@
   right:15px;
   width: 100%;
   max-width: 350px;
+  z-index:99999998;
 }
 
 .notify {
@@ -18,6 +19,7 @@
   -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,0.25);
   box-shadow: 0 0 10px 0 rgba(0,0,0,0.25);
   opacity:0;
+  z-index:99999999;
 }
 
 .notify:last-child {
