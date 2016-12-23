@@ -11,7 +11,8 @@ function notify(options) {
         message: '',
         icon: '',
         theme: null,
-        timeout: null
+        timeout: null,
+        close_button: true
     }, options || {});
 
     this.config = $.extend({
@@ -49,6 +50,7 @@ function notify(options) {
         var message = this.getNotificationMessage();
         var icon = this.getNotificationIcon();
         var timeout = this.getNotificationTimeout();
+        var close_button = this.getNotificationClose();
 
         if(message === null) {
             console.error('Message not set in notification');
@@ -67,6 +69,14 @@ function notify(options) {
             icon = '';
         }
 
+        if(close_button === true) {
+            close_button =  '<div class="notify-action-buttons">' +
+                                '<a href="#" class="notify-square-button notify-close-button"></a>' +
+                            '</div>';
+        } else {
+            close_button = '';
+        }
+
         var html =  '<div id="' + id + '" class="' + classes + '">' +
                         '<div class="notify-body-wrapper">' +
                             '<div class="notify-body">' +
@@ -76,9 +86,7 @@ function notify(options) {
                                   message +
                                 '</div>' +
                             '</div>' +
-                            '<div class="notify-action-buttons">' +
-                                '<a href="#" class="notify-square-button notify-close-button"></a>' +
-                            '</div>' +
+                            close_button +
                         '</div>' +
                     '</div>';
               
@@ -96,18 +104,29 @@ function notify(options) {
       
         var self = this;
       
-        notification.find('.notify-close-button').on('click', function(e) {
-          
-          e.preventDefault();
-          
-          self.hide();
-        
+
+        if(close_button.length > 0) {
+
+            var notify_close = notification.find('.notify-close-button');
+
+        } else {
+
+            var notify_close = notification;
+
+        }
+
+        notify_close.on('click', function(e) {
+
+            e.preventDefault();
+
+            self.hide();
+
         });
 
         if(timeout !== null) {
             setTimeout(function() {
 
-                notification.find('.notify-close-button').click();
+                notify_close.click();
 
             }, timeout);
         }
@@ -161,6 +180,17 @@ function notify(options) {
       
       return '<i class="fa fa-' + this.options.icon + '"></i>';
       
+    };
+
+    /**
+     * Get the notification close button.
+     *
+     * @returns {string}
+     */
+    this.getNotificationClose = function() {
+
+        return this.options.close_button;
+
     };
 
     /**
