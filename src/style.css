@@ -42,7 +42,7 @@
   font-size:13px;
   min-height:54px;
 }
-.notify .notify-body .notify-body-text {
+.notify.notify-with-icon .notify-body .notify-body-text {
   padding-left:74px;
 }
 
@@ -102,7 +102,7 @@
  * Success styles.
  */
 .notify.notify-success {
-  background-color:	#77DD77;
+  background-color: #77DD77;
   border-color:#03C03C;
 }
 .notify.notify-success .notify-body,

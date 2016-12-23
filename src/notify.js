@@ -178,7 +178,12 @@ function notify(options) {
      */
     this.getNotificationClass = function() {
 
-        return 'notify notify-' + this.options.style;
+        var classes = 'notify notify-' + this.options.style;
+      
+        if(this.getNotificationIcon() !== null)
+          classes = classes + ' notify-with-icon';
+      
+        return classes;
 
     };
 
