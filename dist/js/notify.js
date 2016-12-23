@@ -9,8 +9,13 @@ function notify(options) {
         style: 'default',
         title: '',
         message: '',
-        icon: ''
+        icon: '',
+        theme: null
     }, options || {});
+
+    this.config = $.extend({
+        theme: 'default'
+    }, window.JSNOTIFY_CONFIG || {});
 
     /**
      * The id to identify the notification.
@@ -187,6 +192,11 @@ function notify(options) {
       
         if(this.getNotificationIcon() !== null)
           classes = classes + ' notify-with-icon';
+
+        if(this.options.theme === null)
+            classes = classes + ' notify-theme-' + this.config.theme;
+        else
+            classes = classes + ' notify-theme-' + this.options.theme
       
         return classes;
 
