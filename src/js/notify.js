@@ -10,7 +10,8 @@ function notify(options) {
         title: '',
         message: '',
         icon: '',
-        theme: null
+        theme: null,
+        timeout: null
     }, options || {});
 
     this.config = $.extend({
@@ -47,6 +48,7 @@ function notify(options) {
         var title = this.getNotificationTitle();
         var message = this.getNotificationMessage();
         var icon = this.getNotificationIcon();
+        var timeout = this.getNotificationTimeout();
 
         if(message === null) {
             console.error('Message not set in notification');
@@ -102,6 +104,14 @@ function notify(options) {
         
         });
 
+        if(timeout !== null) {
+            setTimeout(function() {
+
+                notification.find('.notify-close-button').click();
+
+            }, timeout);
+        }
+
         return notification;
 
     };
@@ -152,6 +162,18 @@ function notify(options) {
       return '<i class="fa fa-' + this.options.icon + '"></i>';
       
     };
+
+    /**
+     * Get the notification existance timeout.
+     *
+     * @returns {mixed}
+     */
+    this.getNotificationTimeout = function() {
+
+       return this.options.timeout
+
+    };
+
   
     /**
      * Get the notification title.
