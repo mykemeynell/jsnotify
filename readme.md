@@ -59,6 +59,7 @@ window.JSNOTIFY_CONFIG = {
 | ```icon```    | No       | The icon to be used within the notification, this is displayed at the left side of the notification. |
 | ```style```   | No       | Style of the notification. Can be ```default```, ```success``` or ```error```.                       |
 | ```theme```   | No       | Notification theme (only applies to the object this property is set on).                             |
+| ```timeout``` | No       | How long the notification should be available for, before automatically disppearing (null for never).|
 
 ##Themes
 
