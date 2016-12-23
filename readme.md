@@ -42,6 +42,14 @@ var n = new notify(options);
 n.show();
 ```
 
+##Global Config
+
+```javascript
+window.JSNOTIFY_CONFIG = {
+	theme: 'default'
+}
+```
+
 ##Options
 
 | Option        | Required | Description                                                                                          |
@@ -50,3 +58,8 @@ n.show();
 | ```message``` | Yes      | This is the body of the notification.                                                                |
 | ```icon```    | No       | The icon to be used within the notification, this is displayed at the left side of the notification. |
 | ```style```   | No       | Style of the notification. Can be ```default```, ```success``` or ```error```.                       |
+| ```theme```   | No       | Notification theme (only applies to the object this property is set on).                             |
+
+##Themes
+
+Currently supported themes are: ```default``` and ```flat```, these can be set on either the global config, or the instance of the notification.
